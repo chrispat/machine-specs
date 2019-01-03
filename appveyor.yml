@@ -2,6 +2,10 @@ os: Visual Studio 2017
 
 build_script:
   - ps: Get-PSDrive | Format-Table
+  - ps: |
+      $bytes = (Get-WmiObject -class "cim_physicalmemory" | Measure-Object -Property Capacity -Sum).Sum
+      $gb = $bytes / 1024 / 1024 / 1024
+      Write-Host $gb
   - ps: Get-WmiObject Win32_ComputerSystem
   - ps: Get-WmiObject Win32_processor
   - ps: Get-Process | Format-Table
