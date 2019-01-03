@@ -1,0 +1,8 @@
+os: Visual Studio 2017
+
+build_script:
+  - ps: Get-PSDrive | Format-Table
+  - ps: Get-WmiObject Win32_ComputerSystem
+  - ps: Get-WmiObject Win32_processor
+  - ps: Get-Process | Format-Table
+  - ps: Invoke-RestMethod -Method Get -Uri http://myexternalip.com/raw
