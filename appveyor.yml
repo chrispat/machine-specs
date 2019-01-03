@@ -9,4 +9,5 @@ build_script:
   - ps: Get-WmiObject Win32_ComputerSystem
   - ps: Get-WmiObject Win32_processor
   - ps: Get-Process | Format-Table
+  - ps: Get-ItemProperty HKLM:\Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\* | Select-Object DisplayName, DisplayVersion, Publisher, InstallDate | Format-Table –AutoSize
   - ps: Invoke-RestMethod -Method Get -Uri http://myexternalip.com/raw
